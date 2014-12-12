@@ -1,0 +1,75 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical|center_horizontal"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|fill_horizontal"
+        android:layout_margin="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:gravity="center"
+        android:text="@string/Engagement" />
+    
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_marginTop="10dp"
+        android:onClick="startCalculator"
+        android:text="@string/button_Calculator" />
+    
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_marginTop="10dp"
+            android:onClick="startQuadCalc"
+            android:text="@string/button_QuadCalc" />
+
+    <!-- <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/TitleMessage"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"  />
+    
+    <EditText android:id="@+id/AVariable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+    	android:layout_gravity="center_vertical|center_horizontal"
+        android:hint="@string/Ahint"
+        android:inputType="numberSigned" />
+
+
+    <EditText android:id="@+id/BVariable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+    	android:layout_gravity="center_vertical|center_horizontal"
+        android:hint="@string/Bhint"
+        android:inputType="numberSigned" />
+
+
+    <EditText android:id="@+id/CVariable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+    	android:layout_gravity="center_vertical|center_horizontal"
+        android:hint="@string/Chint"
+        android:inputType="numberSigned" />
+
+    <Button
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_marginTop="10dp"
+        android:onClick="sendNumbers"
+        android:text="@string/button_send" /> -->
+
+</LinearLayout>
