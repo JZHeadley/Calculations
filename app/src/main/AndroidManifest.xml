@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.JZHeadley.Calculations"
-    android:versionCode="1"
-    android:versionName="Production" >
+    android:versionCode="3"
+    android:versionName="3" >
 
     <uses-sdk
         android:minSdkVersion="13"
@@ -12,7 +12,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >a
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -28,7 +28,7 @@
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.JZHeadley.quadraticformulaapp.MainActivity" />
+                android:value="com.JZHeadley.Calculations.MainActivity" />
         </activity>
         <activity
             android:name=".QuadraticCalc"
@@ -36,7 +36,7 @@
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.JZHeadley.quadraticformulaapp.MainActivity" />
+                android:value="com.JZHeadley.Calculations.MainActivity" />
         </activity>
         <activity
             android:name=".Calculator"
@@ -44,7 +44,7 @@
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.JZHeadley.MathApp.MainActivity" />
+                android:value="com.JZHeadley.Calculations.MainActivity" />
         </activity>
     </application>
 

@@ -7,18 +7,89 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class QuadraticCalc extends ActionBarActivity {
 	public final static String EXTRA_MESSAGE = "com.JZHeadley.MathApp.MESSAGE";
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_quadratic_calc);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_quadratic_calc);
 
-	}
+        //Creating Button variable
+        Button button = (Button) findViewById(R.id.calculateButton);
 
+        //Adding Listener to button
+        button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+
+                //Creating TextView Variable
+                TextView answer = (TextView) findViewById(R.id.quadAnswer);
+
+                DecimalFormat DecimalFormat = new DecimalFormat("#,###.#####");
+                EditText editTextA = (EditText) findViewById(R.id.AVariable);
+                EditText editTextB = (EditText) findViewById(R.id.BVariable);
+                EditText editTextC = (EditText) findViewById(R.id.CVariable);
+                String AVariable = editTextA.getText().toString();
+                String BVariable = editTextB.getText().toString();
+                String CVariable = editTextC.getText().toString();
+                // end getting variables
+
+                if (AVariable == "" || BVariable == "" || CVariable == "") {
+                    String Answer = "You did not input one of your values.";
+                    answer.setText(Answer);
+                } else {
+                    double a = HandleException(AVariable);
+                    double b = HandleException(BVariable);
+                    double c = HandleException(CVariable);
+
+                    if (a == Double.POSITIVE_INFINITY || b == Double.POSITIVE_INFINITY || c == Double.POSITIVE_INFINITY) {
+                        String Answer = "You did not enter a number.  Please Try Again.";
+                        answer.setText(Answer);
+                    }
+                    if (a == 0) {
+                        String Answer = "Your A value can not be 0";
+                        answer.setText(Answer);
+                    } else {
+                        double NewB = b * -1;
+                        double bInRoot = Math.pow(b, 2);
+                        double rightRoot = 4 * a * c;
+                        double inRoot = bInRoot - rightRoot;
+                        double Root = Math.pow(inRoot, (1.0 / 2));
+
+                        if (inRoot <= -1) {
+                            String Answer = "The equation entered does not have any roots.  There is a negative under the square root.";
+                            answer.setText(Answer);
+                        } else {
+                            double plusNumerator = NewB + Root;
+                            double minusNumerator = NewB - Root;
+                            double denominator = 2 * a;
+                            double plusRoot = plusNumerator / denominator;
+                            double minusRoot = minusNumerator / denominator;
+
+                            if (plusRoot == Double.NaN || plusRoot == Double.POSITIVE_INFINITY || plusRoot == Double.NEGATIVE_INFINITY || minusRoot == Double.NaN || minusRoot == Double.POSITIVE_INFINITY || minusRoot == Double.NEGATIVE_INFINITY) {
+                                String Answer = "There were problems with the numbers you entered";
+                                answer.setText(Answer);
+                            } else {
+                                String Answer = "The two roots of the equation you entered are " + DecimalFormat.format(plusRoot) + " and " + DecimalFormat.format(minusRoot) + ".";
+                                answer.setText(Answer);
+                            }
+
+                        }
+
+                    }
+
+                }
+            }
+
+        });
+    }
 	public double HandleException (String Variable) {
 		try {
 			double Value = Double.parseDouble(Variable);
@@ -30,8 +101,8 @@ public class QuadraticCalc extends ActionBarActivity {
 	}
 	
 	
-	public void sendNumbers(View view) {
-		// Retrieves variables 
+	/*public void sendNumbers(View view) {
+		// Retrieves variables
 		DecimalFormat DecimalFormat = new DecimalFormat("#,###.#####");
 		Intent intent = new Intent(this, DisplayRoots.class);
 		EditText editTextA = (EditText) findViewById(R.id.AVariable);
@@ -41,7 +112,7 @@ public class QuadraticCalc extends ActionBarActivity {
 		String BVariable = editTextB.getText().toString();
 		String CVariable = editTextC.getText().toString();
 		// end getting variables
-		
+
 		if (AVariable == "" || BVariable == "" || CVariable == "") {
 			String Answer = "You did not input one of your values.";
 			intent.putExtra(EXTRA_MESSAGE, Answer);
@@ -50,7 +121,7 @@ public class QuadraticCalc extends ActionBarActivity {
 			double a = HandleException(AVariable);
 			double b = HandleException(BVariable);
 			double c = HandleException(CVariable);
-			
+
 			if (a == Double.POSITIVE_INFINITY || b == Double.POSITIVE_INFINITY || c == Double.POSITIVE_INFINITY) {
 	    		String Answer = "You did not enter a number.  Please Try Again.";
 	    		intent.putExtra(EXTRA_MESSAGE, Answer);
@@ -65,36 +136,36 @@ public class QuadraticCalc extends ActionBarActivity {
 				double rightRoot= 4 * a * c;
 				double inRoot= bInRoot - rightRoot;
 				double Root= Math.pow(inRoot,(1.0/2));
-				
+
 				if (inRoot <=-1) {
 					String Answer = "The equation entered does not have any roots.  There is a negative under the square root.";
 					intent.putExtra(EXTRA_MESSAGE, Answer);
 				}
-	
+
 				else {
 					double plusNumerator= NewB + Root;
 					double minusNumerator= NewB - Root;
 					double denominator= 2 * a;
 					double plusRoot= plusNumerator / denominator;
 					double minusRoot= minusNumerator / denominator;
-					
+
 					if (plusRoot == Double.NaN || plusRoot == Double.POSITIVE_INFINITY || plusRoot ==  Double.NEGATIVE_INFINITY || minusRoot == Double.NaN || minusRoot == Double.POSITIVE_INFINITY || minusRoot ==  Double.NEGATIVE_INFINITY) {
 						String Answer = "There were problems with the numbers you entered";
 						intent.putExtra(EXTRA_MESSAGE, Answer);
 					}
-					
+
 					else {
 						String Answer = "The two roots of the equation you entered are " + DecimalFormat.format(plusRoot) + " and " + DecimalFormat.format(minusRoot) + ".";
 						intent.putExtra(EXTRA_MESSAGE, Answer);
 					}
-					
+
 				}
-				
+
 			}
-			
+
 			startActivity(intent);
 		}
-	}
+	}*/
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
