@@ -45,7 +45,8 @@
         android:layout_gravity="center_vertical|center_horizontal"
         android:layout_marginTop="10dp"
         android:text="@string/button_send"
-        android:id="@+id/calculateButton" />
+        android:id="@+id/calculateButton"
+        android:onClick="hideKeyboard"/>
 
     <TextView
         android:layout_width="match_parent"
